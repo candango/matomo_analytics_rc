@@ -1,27 +1,27 @@
 <?php
 
-/* google_analytics ID */
-$rcmail_config['google_analytics_id'] = 'UA-XXXXXXX-X';
+/* piwik_tracking server */
+$rcmail_config['piwik_tracking_server'] = 'example.com';
 
-/* async or sync mode, default is async */
-$rcmail_config['google_analytics_async'] = TRUE;
+/* piwik_tracking server (this number will show up in your url-bar as ...&idSite=X... or when you go to generate the tracking js code */
+$rcmail_config['piwik_tracking_siteid'] = '3';
 
-/* google_analytics domain tracker. Set to empty string if you want disable (default). */
-$rcmail_config['google_analytics_domain'] = '';
+/* piwik_tracking for subdomains-cookies: (e.g.) 'example.com' will put a cookie on <any_subdomain>.example.com */
+$rcmail_config['piwik_tracking_subdomain'] = 'example.com';
 
-/* exclude private pages - analytics will works only for non-logged users */
-$rcmail_config['google_analytics_privacy'] = FALSE;
+/* exclude private pages - tracking will works only for non-logged users */
+$rcmail_config['piwik_tracking_privacy'] = FALSE;
 
 /* default is use EXCLUDE array to specify allowed templates */
-$rcmail_config['google_analytics_excluding'] = TRUE;
+$rcmail_config['piwik_tracking_excluding'] = TRUE;
 
 /* include following templates */
-$rcmail_config['google_analytics_include'] = array(
+$rcmail_config['piwik_tracking_include'] = array(
   'login'
 );
 
 /* exclude following templates */
-$rcmail_config['google_analytics_exclude'] = array(
+$rcmail_config['piwik_tracking_exclude'] = array(
   'message',
   'messagepreview',
   'compose',
