@@ -1,22 +1,34 @@
 <?php
+<?php
+/**
+ * Roundcube Matomo plugin (http://roundcube.candango.org)
+ *
+ * Bind google analytics script was created by Roland 'rosali' Liebl and
+ * modified by Ondra 'Kepi' Kudlík.
+ *
+ * See: https://github.com/igloonet/roundcube_google_analytics
+ *
+ * Roundcube piwik tracking was authored by Arjan Spaninks.
+ *
+ * See:http://github.com/aspaninks/roundcube_piwik_tracking
+ *
+ *
+ * @link      http://github.com/candango/matomo_analytics
+ * @copyright Copyright (c) 2018 Flavio Garcia
+ * @license   https://www.apache.org/licenses/LICENSE-2.0  Apache-2.0
+ */
 
 /**
- * piwik_tracking
+ * matomo_analytics
  *
- * Bind google analytics script
+ * Insert the Matomo JavaScript tracking code to the roundcube.
  *
- * @author Roland 'rosali' Liebl
- * @modified_by Ondra 'Kepi' Kudlík
- * @website https://github.com/igloonet/roundcube_google_analytics
- * @licence GNU GPL
- * 
- * Forked and modified to do PiWik
- * 
- * @modified_by Arjan Spaninks
- * @website http://github.com/aspaninks/roundcube_piwik_tracking
- * @licence GNU GPL
- **/
-
+ * based on: http://github.com/igloonet/roundcube_google_analytics
+ *
+ * @category plugin
+ * @package matomo_analytics
+ * @author     Flavio Garcia <piraz@candango.org>
+ */
 class piwik_tracking extends rcube_plugin
 {
     function init()
@@ -29,17 +41,19 @@ class piwik_tracking extends rcube_plugin
         $rcmail = rcmail::get_instance();
 
         // test if we have global_config plugin
-        if ( !in_array('global_config', $plugins = $rcmail->config->get('plugins')) ) {
+        if ( !in_array('global_config',
+            $plugins = $rcmail->config->get('plugins')) ) {
             $this->load_config('config/config.inc.php');
         }
 
         // do not allow logged users if privacy on
-        if(!empty($_SESSION['user_id']) && $rcmail->config->get('piwik_tracking_privacy', FALSE))
+        if (!empty($_SESSION['user_id']) && $rcmail->config->get('matomo_analytics_privacy', FALSE)) {
             return $args;
+        }
 
         // excluding or including
-        if ( $rcmail->config->get('piwik_tracking_excluding', TRUE) ) {
-            if ( in_array($args['template'], $rcmail->config->get('piwik_tracking_exclude', array())) )
+        if ( $rcmail->config->get('matomo_analytics_excluding', TRUE) ) {
+            if ( in_array($args['template'], $rcmail->config->get('matomo_analytics_exclude', array())) )
                 return $args;
         }
         else {
