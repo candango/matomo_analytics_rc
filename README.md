@@ -1,6 +1,6 @@
-#Roundcube plugin for Matomo Analytics
+# Roundcube plugin for Matomo Analytics
 
-Easy setup for Matomo Tracking in Roundcube Webmail. 
+Easy setup for Matomo Analytics in Roundcube Webmail. 
 This is fork of plugin from [myroundcube](http://code.google.com/p/myroundcube/).
 Then forked from [roundcube_piwik_tracking](https://github.com/aspaninks/roundcube_piwik_tracking).
 
