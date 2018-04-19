@@ -16,6 +16,7 @@ $rcmail_config['crc_matomo_analytics_id'] = '3';
 
 /* crc_matomo_analytics for subdomains-cookies: (e.g.) 'example.com'
    will put a cookie on <any_subdomain>.example.com */
+// TODO: subdomain is not working, need some work on the plugin side
 $rcmail_config['crc_matomo_analytics_subdomain'] = 'example.com';
 
 /* exclude private pages - tracking will works only for non-logged users */

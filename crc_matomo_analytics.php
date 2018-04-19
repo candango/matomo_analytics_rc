@@ -63,9 +63,24 @@ class crc_matomo_analytics extends rcube_plugin
                 return $args;
             }
         }
-	
-	    // Uglified version of the PiWik JS (Credit:  http://marijnhaverbeke.nl/uglifyjs )
-	    $script = '<script type="text/javascript">var _paq=_paq||[];_paq.push(["setCookieDomain","*.'.$rcmail->config->get('piwik_tracking_subdomain').'"]),_paq.push(["trackPageView"]),_paq.push(["enableLinkTracking"]),function(){var a=("https:"==document.location.protocol?"https":"http")+"://'.$rcmail->config->get('piwik_tracking_server').'/";_paq.push(["setTrackerUrl",a+"piwik.php"]),_paq.push(["setSiteId","'.$rcmail->config->get('piwik_tracking_siteid').'"]);var b=document,c=b.createElement("script"),d=b.getElementsByTagName("script")[0];c.type="text/javascript",c.defer=!0,c.async=!0,c.src=a+"piwik.js",d.parentNode.insertBefore(c,d)}();</script>';
+
+        $script = <<<SCRIPT
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//{$rcmail->config->get("crc_matomo_analytics_server")}/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '{$rcmail->config->get("crc_matomo_analytics_id")}']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+SCRIPT;
 
 	    $rcmail->output->add_footer($script);
 
