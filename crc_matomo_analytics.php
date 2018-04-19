@@ -12,7 +12,7 @@
  * See:http://github.com/aspaninks/roundcube_piwik_tracking
  *
  *
- * @link      http://github.com/candango/matomo_analytics
+ * @link      http://github.com/candango/crc_matomo_analytics
  * @copyright Copyright (c) 2018 Flavio Garcia
  * @license   https://www.apache.org/licenses/LICENSE-2.0  Apache-2.0
  */
@@ -46,24 +46,28 @@ class crc_matomo_analytics extends rcube_plugin
         }
 
         // do not allow logged users if privacy on
-        if (!empty($_SESSION['user_id']) && $rcmail->config->get('matomo_analytics_privacy', FALSE)) {
+        if (!empty($_SESSION['user_id']) && $rcmail->config->get('crc_matomo_analytics_privacy', FALSE)) {
             return $args;
         }
 
         // excluding or including
-        if ( $rcmail->config->get('matomo_analytics_excluding', TRUE) ) {
-            if ( in_array($args['template'], $rcmail->config->get('matomo_analytics_exclude', array())) )
+        if ( $rcmail->config->get('crc_matomo_analytics_excluding', TRUE) ) {
+            if (in_array($args['template'], $rcmail->config->get(
+                'crc_matomo_analytics_exclude', array()))) {
                 return $args;
+            }
         }
         else {
-            if ( !in_array($args['template'], $rcmail->config->get('piwik_tracking_include', array('login'))) )
+            if (!in_array($args['template'], $rcmail->config->get(
+                'crc_matomo_analytics_include', array('login')))) {
                 return $args;
+            }
         }
 	
-	// Uglified version of the PiWik JS (Credit:  http://marijnhaverbeke.nl/uglifyjs )
-	$script = '<script type="text/javascript">var _paq=_paq||[];_paq.push(["setCookieDomain","*.'.$rcmail->config->get('piwik_tracking_subdomain').'"]),_paq.push(["trackPageView"]),_paq.push(["enableLinkTracking"]),function(){var a=("https:"==document.location.protocol?"https":"http")+"://'.$rcmail->config->get('piwik_tracking_server').'/";_paq.push(["setTrackerUrl",a+"piwik.php"]),_paq.push(["setSiteId","'.$rcmail->config->get('piwik_tracking_siteid').'"]);var b=document,c=b.createElement("script"),d=b.getElementsByTagName("script")[0];c.type="text/javascript",c.defer=!0,c.async=!0,c.src=a+"piwik.js",d.parentNode.insertBefore(c,d)}();</script>'; 
+	    // Uglified version of the PiWik JS (Credit:  http://marijnhaverbeke.nl/uglifyjs )
+	    $script = '<script type="text/javascript">var _paq=_paq||[];_paq.push(["setCookieDomain","*.'.$rcmail->config->get('piwik_tracking_subdomain').'"]),_paq.push(["trackPageView"]),_paq.push(["enableLinkTracking"]),function(){var a=("https:"==document.location.protocol?"https":"http")+"://'.$rcmail->config->get('piwik_tracking_server').'/";_paq.push(["setTrackerUrl",a+"piwik.php"]),_paq.push(["setSiteId","'.$rcmail->config->get('piwik_tracking_siteid').'"]);var b=document,c=b.createElement("script"),d=b.getElementsByTagName("script")[0];c.type="text/javascript",c.defer=!0,c.async=!0,c.src=a+"piwik.js",d.parentNode.insertBefore(c,d)}();</script>';
 
-	$rcmail->output->add_footer($script);
+	    $rcmail->output->add_footer($script);
 
         return $args;
     }

@@ -1,7 +1,7 @@
 {
-  "name": "candango/matomo_analytics",
+  "name": "candango/crc-matomo_analytics",
   "type": "roundcube-plugin",
-  "description": "Roundcube plugin for Matomo Analytics Platform",
+  "description": "Roundcube plugin for Matomo Analytics Platform by Candango OSG.",
   "license": "Apache-2.0",
   "version": "0.0.1",
   "authors": [
