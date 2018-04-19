@@ -1,4 +1,4 @@
-# Roundcube plugin for Matomo Analytics
+# Candango Roundcube plugin for Matomo Analytics
 
 Easy setup for Matomo Analytics in Roundcube Webmail. 
 This is fork of plugin from [myroundcube](http://code.google.com/p/myroundcube/).
@@ -6,7 +6,7 @@ Then forked from [roundcube_piwik_tracking](https://github.com/aspaninks/roundcu
 
 ## Installation
 
-Just put in plugins/matomo_analytics folder and add matomo_analytics to your `$rcmail_config['plugins']` array.
+Just put in plugins/crc_matomo_analytics folder and add crc_matomo_analytics to your `$rcmail_config['plugins']` array.
 Now copy the config file:
 ``cp config/config.inc.php.dist config/config.inc.php``
 

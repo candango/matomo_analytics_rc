@@ -1,36 +1,36 @@
 <?php
 /**
- * Roundcube Matomo plugin (http://roundcube.candango.org)
+ * Candango Roundcube Matomo plugin (http://roundcube.candango.org)
  *
- * @link      http://github.com/candango/matomo_analytics
+ * @link      http://github.com/candango/crc_matomo_analytics
  * @copyright Copyright (c) 2018 Flavio Garcia
  * @license   https://www.apache.org/licenses/LICENSE-2.0  Apache-2.0
  */
 
-/* matomo_analytics server */
-$rcmail_config['matomo_analytics_server'] = 'example.com';
+/* crc_matomo_analytics server */
+$rcmail_config['crc_matomo_analytics_server'] = 'example.com';
 
-/* matomo_analytics server (this number will show up in your url-bar as
+/* crc_matomo_analytics server (this number will show up in your url-bar as
    ...&idSite=X... or when you go to generate the tracking js code */
-$rcmail_config['matomo_analytics_id'] = '3';
+$rcmail_config['crc_matomo_analytics_id'] = '3';
 
-/* matomo_analytics for subdomains-cookies: (e.g.) 'example.com'
+/* crc_matomo_analytics for subdomains-cookies: (e.g.) 'example.com'
    will put a cookie on <any_subdomain>.example.com */
-$rcmail_config['matomo_analytics_subdomain'] = 'example.com';
+$rcmail_config['crc_matomo_analytics_subdomain'] = 'example.com';
 
 /* exclude private pages - tracking will works only for non-logged users */
-$rcmail_config['matomo_analytics_privacy'] = FALSE;
+$rcmail_config['crc_matomo_analytics_privacy'] = FALSE;
 
 /* default is use EXCLUDE array to specify allowed templates */
-$rcmail_config['matomo_analytics_excluding'] = TRUE;
+$rcmail_config['crc_matomo_analytics_excluding'] = TRUE;
 
 /* include following templates */
-$rcmail_config['matomo_analytics_include'] = array(
+$rcmail_config['crc_matomo_analytics_include'] = array(
   'login'
 );
 
 /* exclude following templates */
-$rcmail_config['matomo_analytics_exclude'] = array(
+$rcmail_config['crc_matomo_analytics_exclude'] = array(
   'message',
   'messagepreview',
   'compose',

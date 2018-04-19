@@ -1,7 +1,6 @@
 <?php
-<?php
 /**
- * Roundcube Matomo plugin (http://roundcube.candango.org)
+ * Candango Roundcube Matomo plugin (http://roundcube.candango.org)
  *
  * Bind google analytics script was created by Roland 'rosali' Liebl and
  * modified by Ondra 'Kepi' Kudlík.
@@ -19,17 +18,17 @@
  */
 
 /**
- * matomo_analytics
+ * Candango matome analytics plugin
  *
  * Insert the Matomo JavaScript tracking code to the roundcube.
  *
  * based on: http://github.com/igloonet/roundcube_google_analytics
  *
  * @category plugin
- * @package matomo_analytics
+ * @package crc_matomo_analytics
  * @author     Flavio Garcia <piraz@candango.org>
  */
-class piwik_tracking extends rcube_plugin
+class crc_matomo_analytics extends rcube_plugin
 {
     function init()
     {
