@@ -1,1 +1,10 @@
+# PyCharm
+.idea
+
+# matomo_analytics
 config/config.inc.php
+
+# Composer
+composer.phar
+composer.lock
+vendor
