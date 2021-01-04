@@ -4,7 +4,7 @@
   "description": "Roundcube plugin for Matomo Analytics Platform by Candango OSG.",
   "license": "Apache-2.0",
   "keywords": ["analytics", "matomo", "piwik"],
-  "version": "0.0.2",
+  "version": "0.2",
   "authors": [
     {
       "name": "Flavio Garcia",
