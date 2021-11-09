@@ -30,6 +30,8 @@
  */
 class matomo_analytics_rc extends rcube_plugin
 {
+    private $processed = false;
+
     function init()
     {
         $this->add_hook("render_page", array($this, "add_script"));
@@ -38,7 +40,10 @@ class matomo_analytics_rc extends rcube_plugin
     function add_script($args)
     {
         $rcmail = rcmail::get_instance();
-
+        # Preventing the plugin to process the script twice
+        if ($this->processed) {
+            return $args;
+        }
         // test if we have global_config plugin
         if (!in_array("global_config",
             $plugins = $rcmail->config->get("plugins")))
@@ -87,6 +92,7 @@ class matomo_analytics_rc extends rcube_plugin
 SCRIPT;
 
 	    $rcmail->output->add_footer($script);
+        $this->processed = true;
         return $args;
     }
 }
